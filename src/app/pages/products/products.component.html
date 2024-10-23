@@ -1,0 +1,34 @@
+<h1>danh sach san pham</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">stt</th>
+      <th scope="col">name</th>
+      <th scope="col">price</th>
+      <th scope="col">description</th>
+      <th scope="col">image</th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.image }}</td>
+      <td>{{ product.description }}</td>
+      <td>
+        <button class="btn btn-danger" (click)="onRemove(product.id!)">
+          delete
+        </button>
+
+        <button
+          class="btn btn-primary"
+          routerLink="/products/{{ product.id }}/edit"
+        >
+          update
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

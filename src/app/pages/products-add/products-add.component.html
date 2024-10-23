@@ -1,0 +1,42 @@
+<h1>them san pham</h1>
+<form action="" [formGroup]="productForm" (ngSubmit)="onAdd()">
+  <div class="form-group">
+    <label for="name" class="form-lable">name</label>
+    <input type="text" class="form-control" formControlName="name" />
+    <div
+      *ngIf="
+        productForm.get('name').invalid &&
+        (productForm.get('name').dirty || productForm.get('name').touched)
+      "
+    >
+      <div *ngIf="productForm.get('name').errors?.required">bat buoc nhap</div>
+      <div *ngIf="productForm.get('name').errors?.minlength">
+        it nhat 3 ki tu
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="price" class="form-lable">price</label>
+    <input type="number" class="form-control" formControlName="price" />
+    <div
+      *ngIf="
+        productForm.get('price').invalid &&
+        (productForm.get('price').dirty || productForm.get('price').touched)
+      "
+    >
+      <div *ngIf="productForm.get('price').errors?.required">bat buoc nhap</div>
+      <div *ngIf="productForm.get('price').errors?.min">gia phai lon hon 0</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="price" class="form-lable">image</label>
+    <input type="file" class="form-control" formControlName="image" />
+  </div>
+  <div class="form-group">
+    <label for="description" class="form-lable">description</label>
+    <input type="text" class="form-control" formControlName="description" />
+  </div>
+  <button type="submit" class="btn btn-primary">them</button>
+</form>
